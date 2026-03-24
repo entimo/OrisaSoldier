@@ -4,8 +4,8 @@
 Déployer automatiquement une VM Lubuntu sur Proxmox avec Ansible.
 
 ## Structure
-- `playbook.yml` : Le code de création.
-- `inventories/dev/` et `inventories/prd/` : Les IPs et mots de passe.
+- playbook.yml : Le code de création.
+- inventories/dev/ et inventories/prd/ : Les IPs et mots de passe.
 
 ## Comment lancer ?
 **Commande pour la DEV :**

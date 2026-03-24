@@ -1,10 +1,10 @@
 ---
-- name: Automatisation de la création de la VM sur Proxmox [cite: 73, 110]
+- name: Automatisation de la création de la VM sur Proxmox
   hosts: proxmox
   gather_facts: false
 
   tasks:
-    - name: 1. Création de la machine virtuelle Lubuntu [cite: 110, 111]
+    - name: 1. Création de la machine virtuelle Lubuntu
       community.proxmox.proxmox_kvm:
         api_host: "{{ api_host }}"
         api_user: "{{ api_user }}"
@@ -12,27 +12,27 @@
         validate_certs: false
         node: "node0esieeit"
         name: "Lubuntu-VM"
-        vmid: 200 [cite: 114]
-        memory: 512 [cite: 114]
-        cores: 2 [cite: 114]
-        sockets: 1 [cite: 114]
+        vmid: 200
+        memory: 512
+        cores: 2
+        sockets: 1
         ide:
-          ide2: "local:iso/lubuntu-16.04.6-desktop-amd64.iso,media=cdrom" [cite: 111]
+          ide2: "local:iso/lubuntu-16.04.6-desktop-amd64.iso,media=cdrom"
         scsihw: virtio-scsi-pci
         scsi:
-          scsi0: "local-lvm:10" [cite: 114]
+          scsi0: "local-lvm:10"
         net:
           net0: "virtio,bridge=vmbr0"
         state: present
       delegate_to: localhost
 
-    - name: 2. Démarrage de la machine virtuelle 
+    - name: 2. Démarrage de la machine virtuelle
       community.proxmox.proxmox_kvm:
         api_host: "{{ api_host }}"
         api_user: "{{ api_user }}"
         api_password: "{{ api_password }}"
         validate_certs: false
         node: "node0esieeit"
-        vmid: 200 [cite: 114]
+        vmid: 200
         state: started
       delegate_to: localhost
